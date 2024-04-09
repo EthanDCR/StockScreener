@@ -1,5 +1,1 @@
-import requests
-import yfinance as yf
-response = requests.get('https://google.com/')
-print(response)
 
