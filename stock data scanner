@@ -1,0 +1,23 @@
+from yahoofinancials.calcs import num_shares_outstanding, eps
+from yahoofinancials.data import YahooFinanceData
+from unittest import main as t_main, TestCase
+import requests
+import json
+import datetime
+import warnings
+
+
+stocks = ['AAPL', 'MSFT', 'C', 'IL&FSTRANS.NS']
+currencies = ['EURUSD=X', 'JPY=X', 'GBPUSD=X']
+us_treasuries = ['^TNX', '^IRX', '^TYX']
+
+class Analysis(object):
+    exchange = ""
+    symbol = ""
+    screener = ""
+    time = ""
+    interval = ""
+    summary = {}
+    oscillators = {}
+    moving_averages = {}
+    indicators = {}
