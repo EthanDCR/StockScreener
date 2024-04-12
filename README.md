@@ -5,6 +5,22 @@ Create a website / program that will use APIs to offers access to a wide range o
 
 https://www.nasdaq.com/solutions/data-link-api
 
+# Define Requirements and features.
+
+1. at least a 2 page front end, one landing page and one for dashboard.
+2. dashboard with widgets 
+3. customizable with a UI 
+4. must save users dashboard at the end. 
+
+
+
+
+
+
+
+
+
+
 # Project Structure
 
 my_flask_app/
