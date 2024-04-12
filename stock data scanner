@@ -1,23 +1,19 @@
-from yahoofinancials.calcs import num_shares_outstanding, eps
-from yahoofinancials.data import YahooFinanceData
-from unittest import main as t_main, TestCase
 import requests
-import json
-import datetime
-import warnings
+from bs4 import BeautifulSoup
 
+def scrape_stock_price(symbol):
+    url = f"https://finance.yahoo.com/quote/{symbol}"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+    price_element = soup.find("span", class_="Trsdu(0.3s) Fw(b) Fz(36px) Mb(-4px) D(ib)")
+    if price_element:
+        return price_element.text.strip()
+    else:
+        return "Stock symbol not found or data not available"
 
-stocks = ['AAPL', 'MSFT', 'C', 'IL&FSTRANS.NS']
-currencies = ['EURUSD=X', 'JPY=X', 'GBPUSD=X']
-us_treasuries = ['^TNX', '^IRX', '^TYX']
-
-class Analysis(object):
-    exchange = ""
-    symbol = ""
-    screener = ""
-    time = ""
-    interval = ""
-    summary = {}
-    oscillators = {}
-    moving_averages = {}
-    indicators = {}
+if __name__ == "__main__":
+    symbol = input("Enter the stock symbol: ")
+    stock_price = scrape_stock_price(symbol)
+    print(f"The current price of {symbol} is: {stock_price}")
+    
+    
